@@ -97,7 +97,6 @@ export default {
   },
   methods: {
     logout () {
-      console.log('hello')
       localStorage.clear()
       this.$router.push('/')
       this.$router.go()
