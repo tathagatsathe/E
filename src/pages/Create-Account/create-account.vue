@@ -62,7 +62,6 @@ export default {
       } else {
         this.error = 'Invalid'
       }
-      console.log(response.data)
     }
   }
 }
