@@ -93,8 +93,7 @@ export default {
         prodname: this.product.ProductName,
         image: this.product.Image,
         quantity: this.counter
-      })
-      console.log(cartresponse)
+      }))
     },
     increment () {
       this.counter++
