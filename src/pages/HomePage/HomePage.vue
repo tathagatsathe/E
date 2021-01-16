@@ -223,7 +223,6 @@ export default {
   methods: {
     async ads () {
       const response = await AuthenticationService.home()
-      // console.log(response.data)
       this.products = response.data
       this.mobiles = response.data.slice(0, 5)
       this.furniture = response.data.slice(16, 19)
@@ -234,7 +233,6 @@ export default {
           }
         }
       })
-      console.log(this.watches)
     }
   }
 }
