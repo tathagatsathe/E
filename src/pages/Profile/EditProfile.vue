@@ -70,13 +70,11 @@ export default {
         address: this.address,
         City: this.City
       })
-      console.log(response)
       localStorage.setItem('email', this.FirstName)
       localStorage.setItem('LastName', this.LastName)
       localStorage.setItem('Phone', this.Phone)
       localStorage.setItem('address', this.address)
       localStorage.setItem('City', this.City)
-      // console.log(localStorage)
       this.$router.go()
     }
   }
