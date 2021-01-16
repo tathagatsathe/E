@@ -44,9 +44,7 @@ export default {
       const response = await AuthenticationService.getorders({
         cust_id: localStorage.getItem('id')
       })
-      console.log(response)
       this.order = response.data
-      console.log(this.order)
     }
   }
 }
