@@ -70,9 +70,7 @@ export default {
         product: this.product,
         det_quantity: 1
       })
-      console.log(response.data)
       if (Number(response.data)) {
-        console.log(Number(response.data))
         this.$router.push('/profile/checkout')
       }
     },
@@ -80,22 +78,18 @@ export default {
       const response = await AuthenticationService.getcart({
         id: localStorage.getItem('id')
       })
-      console.log(response)
       this.product = response.data
-      console.log(this.product)
       this.total = 0
       var x = 0
       this.product.forEach(function (Item) {
         x = x + Number(Item.price)
       })
       this.total = x
-      console.log(this.total)
     },
     async removefromcart (cart) {
       const response = await AuthenticationService.removefromcart({
         cart_id: cart
       })
-      console.log(response)
       if (response.data.affectedRows) {
         this.$router.go()
       } else {
