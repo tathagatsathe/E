@@ -109,7 +109,6 @@ export default {
       const response = await AuthenticationService.info({
         id: localStorage.getItem('id')
       })
-      console.log(response.data)
     }
   }
 }
