@@ -75,8 +75,6 @@ export default {
       } else {
         this.error = 'Incorrect Password'
       }
-      console.log(response.data)
-      console.log(localStorage)
     }
   }
 }
