@@ -43,7 +43,6 @@ export default {
   methods: {
     async getorder () {
       const response = await AuthenticationService.getorder(this.$route.params.orderid)
-      console.log(response)
       this.order = response.data
     }
   }
