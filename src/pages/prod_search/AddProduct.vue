@@ -97,8 +97,6 @@ export default {
       } else {
         this.error = 'Error'
       }
-      console.log(response.data)
-      console.log(localStorage)
     },
     refresh () {
       this.$router.go()
