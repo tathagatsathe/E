@@ -60,7 +60,6 @@ export default {
     async buy () {
       var dateObj = new Date()
       var date = dateObj.getDate() + '/' + dateObj.getMonth() + 1 + '/' + dateObj.getFullYear()
-      console.log(date)
       const response = await AuthenticationService.buy({
         cust_id: localStorage.getItem('id'),
         order_date: date,
@@ -92,8 +91,6 @@ export default {
       })
       if (response.data.affectedRows) {
         this.$router.go()
-      } else {
-        console.log('Error in removing from cart')
       }
     }
   }
