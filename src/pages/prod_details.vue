@@ -71,7 +71,8 @@ export default {
       product: [],
       producttt: {},
       addedtocart: '',
-      counter: 1
+      counter: 1,
+      a: ''
     }
   },
   mounted () {
@@ -80,8 +81,6 @@ export default {
   methods: {
     async proddetails () {
       const response = await AuthenticationService.proddetails(this.$route.params.id)
-      console.log(response.data.ProductName)
-      console.log(response)
       this.product = response.data
       this.addedtocart = ''
     },
@@ -93,7 +92,8 @@ export default {
         prodname: this.product.ProductName,
         image: this.product.Image,
         quantity: this.counter
-      }))
+      })
+      this.a = cartresponse.data
     },
     increment () {
       this.counter++

@@ -143,7 +143,7 @@ body {
   padding: 30px 10px;
   width:30%;
   float:left;
-  margin:10px 5px 5px 20px;
+  margin:10px 5px 5px 10px;
   overflow:hidden;
   box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
