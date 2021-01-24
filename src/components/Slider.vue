@@ -122,4 +122,23 @@ img {
   border-radius: 5px;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+@media screen and (max-width:700px) {
+  .sli, img {
+    height: 120px;
+  }
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border-radius: 0 4px 4px 0;
+    text-decoration: none;
+    user-select: none;
+  }
+}
 </style>

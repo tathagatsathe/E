@@ -1,10 +1,12 @@
 <template>
   <div>
-    <!-- <button @click="search" style="width:50px; height:30px;color:white;">search</button> -->
     <body>
-      <div class="psearchcol">
+      <div
+        class="psearchcol"
+        style="overflow-x: hidden;"
+      >
         <div class="psearchcol1">
-          <div style="margin: 20px 5px">
+          <div class="searchbykey">
             <strong>Search</strong>
             <br>
             <input
@@ -13,7 +15,7 @@
               placeholder="search by keyword"
             ><br>
           </div>
-          <div style="margin: 20px 5px">
+          <div class="sortbyprice">
             <strong>Sort By Price</strong><br>
             <input
               type="radio"
@@ -45,12 +47,11 @@
                 </div>
                 <div class="psearchtext">
                   <h2 class="psprodname">
-                    <strong>{{ product.ProductName }}</strong>
+                    <strong>{{ product.ProductName|truncate }}</strong>
                   </h2>
                   <br>
                   <a
                     v-if="Number(product.MRP)"
-                    style="font-size:15px"
                   ><a style="text-decoration:line-through">&#8377; {{ product.MRP }}<br></a></a>
                   <a>&#8377; {{ product.Price }}</a>
                   <br>
@@ -71,6 +72,14 @@ import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   name: 'PrSearch',
+  filters: {
+    truncate: function (value) {
+      if (value && value.length > 50) {
+        value = value.substring(0, 50) + '...'
+      }
+      return value
+    }
+  },
   data () {
     return {
       products: [],
@@ -104,44 +113,61 @@ export default {
 
 <style>
 .psearchcol1 {
-  /* border: 2px solid rgb(139, 135, 135); */
   width: 20%;
   height: 600px;
   background-color: rgb(253, 253, 253);
   border-radius: 2px;
-  margin: 30px 0px 0px 10px;
-  /* display: inline-block; */
+  margin: 3.5% 2%;
   float: left;
-  /* vertical-align: top; */
-  padding: 20px;
+  padding: auto;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
+.searchbykey {
+  margin: 0px auto;
+  /* border-bottom: 1px solid rgb(168, 168, 168); */
+  width: 100%;
+  padding: 5%;
+}
+.searchbykey input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(158, 158, 158);
+  background-color: rgb(240, 240, 240);
+  outline: none;
+  padding: 2%;
+  padding-bottom: 0px;
+}
+.sortbyprice {
+  width: 100%;
+  /* border-bottom: 1px solid rgb(168, 168, 168); */
+  padding: 5%;
+}
+.sortbyprice input[type= radio] {
+  height: 15px;
+  width: 15px;
+}
+.sortbyprice label {
+  margin-left: 5%;
+}
 .psearchcol2 {
-  /* border: 1px solid rgb(5, 5, 5); */
   width: 75%;
   height: 80%;
   background-color: rgb(255, 255, 255);
   border-radius: 2px;
-  margin: 30px 0px 0px 10px;
-  /* display: inline-block; */
+  margin: 3.5% 0.5%;
   float: left;
-  padding: 20px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifS;
-  /* box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .psearchrows {
-    /* border: 1px solid black; */
     border-radius: 2x;
-    border-left-width: 10px;
-    margin-bottom: 20px ;
+    margin-bottom: 2.5% ;
     box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-    height: 300px
-    /* display: flex; */
+    height: 300px;
+    width:97%;
 }
 .psearchrows img {
-    /* padding: 15px; */
     max-height: 100%;
     width: auto;
     height: auto;
@@ -157,24 +183,40 @@ export default {
 }
 .psearchtext {
   float: right;
-  /* vertical-align: top; */
   height: 100%;
   width: 70%;
   text-align: left;
   font-size: 20px;
-  /* display: inline-block; */
-  padding-inline: 50px;
-  padding-top: 20px;
-  /* border: 2px solid black; */
-  /* position: relative; */
+  padding: 2%;
 }
 .psprodname {
     border-bottom: 1px solid rgb(146, 146, 146);
-    width: 500px;
     padding-bottom: 2%;
     font-size: 30px;
     display: block;
     max-height: 40%;
     overflow: hidden;
+}
+@media screen and (max-width:700px) {
+  .psearchcol1 {
+    font-size: 1.8vw;
+    height: 300px;
+  }
+  .searchbykey input[type=text] {
+    height: 20px;
+  }
+  .sortbyprice input[type= radio] {
+    height: 7.5px;
+    width: 7.5px;
+  }
+  .psearchrows {
+    height: 135px;
+  }
+  .psearchtext {
+    font-size: 2vw;
+  }
+  .psprodname {
+    font-size: 3vw;
+  }
 }
 </style>

@@ -21,31 +21,22 @@
             </h2>
             <a
               v-if="Number(product.MRP)"
-              style="font-size:15px"
             ><a style="text-decoration:line-through">&#8377; {{ product.MRP }}</a></a>
             <h3> &#8377; {{ product.Price }}</h3>
             <a>Rating: {{ product.Rating }}</a><br>
-            <!-- <p style="color:black; font-size:20px;">{{product.Category}}</p> -->
-            <!-- <router-link to="/profile/cart">
-              <button
-                class="Buy_Now"
-                style="color:white; background-color:black; font-size:15px;"
-              >
-                Buy Now
-              </button>
-            </router-link> -->
             <button
               class="Buy_Now"
-              style="color:white; background-color:black; font-size:15px;float:left;"
+              style="color:white; background-color:black;float:left;"
               @click="addtocart"
             >
               Add to Cart
             </button>
-            <div style="float:left;">
+            <div style="float:left; width: 10%;">
               <input
                 v-model="counter"
+                class="counter"
                 type="number"
-                style="width:20%;margin-top:20%;"
+                style="width:100%;margin-top:20%;"
               >
             </div>
             <a v-if="this.addedtocart === 'Added to Cart'">Added to Cart</a>
@@ -57,7 +48,6 @@
         </div>
       </div>
     </body>
-    <!-- <button style="height:20px; width:50px;color:white;" @click="proddetails">details</button> -->
   </div>
 </template>
 
@@ -107,8 +97,6 @@ export default {
 <style>
 .row {
   width:100%;
-  /* margin: 1%; */
-  margin-left: 1%;
 }
 .productname {
     border-bottom: 1px solid rgb(116, 114, 114);
@@ -116,32 +104,28 @@ export default {
     padding-bottom: 1%;
 }
 .col_image {
-    width: 30%;
-    margin: 30px 30px 30px 20px;
-    float: left;
-    /* border: 1px solid rgb(5, 5, 5); */
-    border-radius: 2px;
-    height: 325px;
-    max-height: 10%;
-    padding: 5px 5px 40px 5px;
-    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: white;
-  }
+  width: 30%;
+  float: left;
+  border-radius: 2px;
+  margin: 2.5%;
+  height: 325px;
+  max-height: 10%;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  overflow: hidden;
+}
 .pr_image {
   width: auto;
-  height: auto;
+  height: 100%;
   display: block;
-  max-height: 315px;
   margin:auto;
 }
 .col_text {
     width: 60%;
     float: left;
     height: 325px;
-    margin-top: 30px;
-    margin-left: 20px;
-    padding-bottom: 30px;
-    padding: 20px 30px 10px 30px;
+    margin: 2.5%;
+    padding: 2%;
     box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
 }
@@ -151,18 +135,40 @@ export default {
     height: 15%;
     border-radius: 2px;
     color: white;
-    margin-bottom: 20px;
+    font-size:15px;
 }
 .details {
-    border-top: 1px solid rgb(7, 7, 7);
-    min-height: 20px;
-    width: 94%;
-    margin-top: 50px;
-    margin-bottom: 10%;
-    margin-left: 2.5%;
-    border-top-width: 10px ;
-    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 15px;
-    background-color: white;
+  border-top: 1px solid rgb(7, 7, 7);
+  width: 94%;
+  margin: 2.5%;
+  border-top-width: 0.5vw ;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1% 2%;
+  background-color: white;
+}
+@media screen and (max-width:700px) {
+  .col_image {
+    height: 200px;
+  }
+  .col_text {
+    height: 200px;
+    font-size: 2.5vw;
+  }
+  .col_text h2 {
+    font-size: 4vw;
+    vertical-align: baseline;
+  }
+  .col_text h3 {
+    font-size: 3vw;
+  }
+  .Buy_Now {
+    font-size: 2vw;
+  }
+  .counter {
+    height: 5vw;
+  }
+  .details {
+    font-size: 1.8vw;
+  }
 }
 </style>

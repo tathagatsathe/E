@@ -12,7 +12,7 @@
         required
       >
     </div>
-    <a id="email">Email-Id</a>
+    <a id="emailc">Email-Id</a>
     <div class="email-sign">
       <input
         v-model="email"
@@ -21,7 +21,7 @@
         required
       >
     </div>
-    <a id="pass">Password</a>
+    <a id="passc">Password</a>
     <div class="pass-sign">
       <input
         v-model="password"
@@ -30,7 +30,7 @@
         required
       >
     </div>
-    <div id="but">
+    <div id="cbut">
       <button @click="register">
         Create Account
       </button>
@@ -67,34 +67,25 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 #ecom {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000000;
-  margin: 70px 0px 0px 400px;
+  margin: 5% auto;
   width: 50%;
-  height: 375px;
+  height: 400px !important;
   border: 2px solid black;
   border-bottom-width:15px;
   border-radius: 2px;
 }
-.nameclass input[type=text]{
-  width: 400px;
+input {
+  width: 60%;
   height: 35px;
-  border-radius: 2px;
-}
-.email-sign input[type=text]{
-  width: 400px;
-  height: 35px;
-  border-radius: 2px;
-}
-.pass-sign input[type=password]{
-  width: 400px;
-  height: 35px;
-  border-radius: 2px;
+  border: 1px solid black;
+  outline: none;
 }
 #Create {
   margin: 50px 0px 0px 0px
@@ -103,11 +94,36 @@ export default {
   margin: 5px 0px 0px 180px
 }
 button {
-  margin: 30px 0px 0px 0px;
+  margin: 10px auto;
   width: 40%;
   height: 40px;
   color: white;
   background-color: black;
 }
-
+@media screen and (max-width:700px) {
+.nameclass input[type=text]{
+  height: 15px;
+}
+.cbut {
+  width: 100%;
+  margin-top: 5%;
+}
+button {
+  margin-top: 10%;
+  display: block;
+  width: 50%;
+  height: 20px;
+  color: white;
+  font-size: 2vw;
+  background-color: black;
+}
+#name, #emailc, #passc {
+  display: block;
+  margin-bottom: -5px;
+  margin-top: 5px;
+}
+.pass-sign {
+  margin-bottom: 10px;
+}
+}
 </style>

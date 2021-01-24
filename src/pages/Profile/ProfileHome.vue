@@ -1,10 +1,10 @@
 <template>
   <div>
     <body>
-      <div class="profrowc1">
-        <router-link to="/profile/cart">
+      <div class="profrowc11">
+        <router-link to="/profile/orders">
           <div class="wish">
-            <strong style="font-size:20px">Orders</strong>
+            <strong>Orders</strong>
           </div>
         </router-link>
         <div
@@ -15,7 +15,7 @@
           <router-link :to="'/orders/' + order.order_id">
             <div
               class="ordertextarea"
-              style="font-size:15px; color:black; height:80%; width:100%;"
+              style="color:black; height:80%; width:100%;"
             >
               <h11>Ordered on: <strong>{{ order.order_date }}</strong></h11><br>
               <h8>Id: <strong>{{ order.order_id }}</strong></h8><br>
@@ -25,10 +25,10 @@
           </router-link>
         </div>
       </div>
-      <div class="profrowc2">
+      <div class="profrowc22">
         <router-link to="/profile/cart">
           <div class="wish">
-            <strong style="font-size:20px">Cart</strong>
+            <strong>Cart</strong>
           </div>
         </router-link>
         <div
@@ -42,7 +42,7 @@
           >
             <img :src="product.Prod_Image">
             <div class="profptext">
-              <strong>{{ product.Prod_Name }}</strong><br>
+              <strong>{{ product.Prod_Name|truncate }}</strong><br>
               <a>&#8377; {{ product.price }}</a>
             </div>
           </router-link>
@@ -56,6 +56,14 @@ import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   name: 'ProfileHome',
+  filters: {
+    truncate: function (value) {
+      if (value && value.length > 40) {
+        value = value.substring(0, 40) + '...'
+      }
+      return value
+    }
+  },
   data () {
     return {
       products: [],
@@ -95,116 +103,81 @@ body {
 }
 .wish{
   color: black;
-  margin: 15px 0px 0px 20px;
+  font-size: 20px;
+  margin: 1% 2%;
 }
-.profrow{
-  font-size: 0;
-  margin-top: 50px;
-}
-.profcol1 {
+/* .profcol1 {
   border: 2px solid rgb(139, 135, 135);
   width: 30%;
   height: 650px;
   background-color: rgb(255, 251, 251);
   margin: 0px 0px 30px 30px;
-  /* display: inline-block; */
   color: black;
   padding-top: 20px;
   float: left;
-  /* padding-left:50px */
-}
-.profcol2 {
+} */
+/* .profcol2 {
   border: 2px solid rgb(139, 135, 135);
   width: 60%;
   height: 650px;
   background-color:  rgb(255, 251, 251);
   float: left;
-  /* display: inline-block; */
   margin-left: 40px;
-  /* margin-top: 15px; */
-  /* margin-bottom: 30px; */
   padding: 10px;
   padding-right: 20px;
-}
-.profrowc1 {
+} */
+.profrowc11 {
   border: 1px solid rgb(139, 135, 135);
-  width: 100%;
-  height: 300px !important;
-  margin: 5px;
-  padding: 10px 10px 0px 10px;
+  width: 95%;
+  height: 295px;
+  margin: 2%;
 }
-.profrowc2 {
-  width: 100%;
-  height: 300px;
-  margin: 5px;
+.profrowc22 {
+  width: 95%;
+  height: 295px;
+  margin: 2%;
+  border: 1px solid rgb(139, 135, 135);
 }
 .orderrows {
   height: 70%;
-  padding: 30px 10px;
+  padding: 2%;
   width:30%;
   float:left;
-  margin:10px 5px 5px 10px;
+  margin: 1% 1.5%;
   overflow:hidden;
   box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.ordertextarea {
+  font-size:15px;
 }
 .profprows{
   width: 30%;
   height: 80%;
   float: left;
-  padding: 10px;
-  padding-bottom: 5px;
-  margin-left: 20px;
+  margin: 1% 1.5%;
   box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 .profprows img {
   height: 70%;
-  /* width: 40%; */
   width: auto;
   margin: auto;
   display: block;
   border-radius: 0px;
 }
-.c_orders1 {
-  width: 30%;
-  height: 95%;
-  vertical-align: center;
-  /* border: 0.5px solid black; */
-  display: inline-block;
-  box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
-}
-.c_orders2 {
-  color: black;
-  display: inline-block;
-  padding-left: 50px;
-}
-.profptext {
-  height: 30%;
-  /* border: 1px solid green; */
-}
-.profptext strong {
-  display: block;
-  /* border-bottom: 1px solid rgb(133, 133, 133); */
-  height: 70%;
-  overflow: hidden;
-}
-.profptext a {
-  display: block;
-  /* border: 1px solid blue; */
-  margin-top: -25px;
-}
-.profinfo {
-  margin-top: 20px;
-  text-align: center;
-  /* border-bottom: 0.5px solid rgb(114, 113, 113); */
-}
-.profinfalist {
-  border-bottom: 0.5px solid rgb(114, 113, 113);
-  /* margin-bottom: 10px; */
-  margin: 15px 25px 0px 25px;
-}
-.profilepic {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+@media screen and (max-width:700px) {
+  .wish{
+    font-size: 2vw;
+  }
+  .profrowc11 {
+    height: 180px;
+    font-size: 1vw;
+  }
+  .ordertextarea {
+    font-size: 1.5vw;
+  }
+  .profrowc22 {
+    height: 180px;
+    font-size: 1vw;
+  }
 }
 </style>

@@ -68,11 +68,11 @@ nav {
   height: 45px;
   width: 100%;
   background-color: rgb(63, 62, 62);
+  overflow-x: hidden;
 }
 
 nav .menu-item {
   color:#FFF;
-  /* padding: 10px 20px; */
   position: relative;
   text-align: center;
   display: flex;
@@ -87,5 +87,12 @@ nav .menu-item a {
   color: inherit;
   text-decoration: none;
 }
-
+@media screen and (max-width:700px) {
+  nav {
+    height: 7vw;
+  }
+  nav .menu-item a {
+  font-size: 2.5vw;
+}
+}
 </style>

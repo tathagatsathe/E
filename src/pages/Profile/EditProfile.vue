@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     async edit () {
-      const response = await AuthenticationService.edit({
+      await AuthenticationService.edit({
         email: localStorage.getItem('email'),
         FirstName: this.FirstName,
         LastName: this.LastName,

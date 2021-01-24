@@ -2,7 +2,10 @@
   <div>
     <body>
       <div class="pcartcol">
-        <a style="display:block;font-size:25px;">Your Cart's Total: <strong>&#8377;{{ total }}</strong></a>
+        <a
+          class="carthead"
+          style="color:black;"
+        >Your Cart's Total: <strong>&#8377;{{ total }}</strong></a>
         <div
           v-for="product in product"
           :key="product.cart_id"
@@ -16,15 +19,18 @@
               <img :src="product.Prod_Image">
             </div>
             <div class="pcarttext">
-              <div style="overflow:hidden;height:60%;margin-bottom:5px;">
-                <h2 class="cartprodname">
-                  {{ product.Prod_Name }}
-                </h2>
+              <div style="overflow:hidden;">
+                <a
+                  class="cartprodname"
+                  style="color: black;"
+                >
+                  <b>{{ product.Prod_Name|truncate }}</b>
+                </a>
               </div>
               &#8377; {{ product.price }}<br>
             </div>
           </router-link>
-          <div style="font-size:80%;line-height:10px;">
+          <div class="q_andr">
             <a style="float:left;">Quantity: {{ product.quantity }}</a><a
               style="float:right;"
               @click="removefromcart(product.cart_id)"
@@ -44,6 +50,14 @@
 import AuthenticationService from '@/services/AuthenticationService'
 export default {
   name: 'Cart',
+  filters: {
+    truncate: function (value) {
+      if (value && value.length > 25) {
+        value = value.substring(0, 25) + '...'
+      }
+      return value
+    }
+  },
   data () {
     return {
       product: [],
@@ -99,26 +113,23 @@ export default {
 
 <style>
 .pcartrows {
-    width: 31%;
-    /* border: 0.5px solid rgb(70, 69, 69); */
+    width: 30%;
     height: 260px;
-    margin-bottom: 10px;
     float: left;
-    margin-right: 6px;
-    margin-left: 6px;
     border-radius: 0;
+    margin: 1% 1.5%;
+    padding: 0% 0% 0.5% 0%;
     border-top-left-radius:10px;
     border-top-right-radius:10px;
     box-shadow:0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
 }
 .pcartimage {
-    /* width: 30%; */
     height: 70%;
     display: block;
     margin: 0px auto;
+    overflow: hidden;
 }
 .pcartimage img {
-    /* height: 150px; */
     display: block;
     height: 100%;
     width: auto;
@@ -132,25 +143,37 @@ export default {
     height: 25%;
     width: 100%;
     font-size:15px;
-    line-height: 12px;
     overflow: hidden;
-    padding: 2px 2px;
+    padding: 2%;
 }
-.cartprodname {
+.cartprodname a {
     font-size:15px;
     font-weight: bold;
     overflow: hidden;
 }
-.cartbutton {
-    width: 30%;
-    float: right;
-    border:2px solid red;
-    /* height: 100%; */
+.q_andr {
+  font-size: 12px;
 }
 .pcartcol button {
-    margin-left: 80%;
+    margin-left: 70%;
 }
 .pcartrows a {
     cursor: pointer;
+}
+.carthead {
+  font-size: 25px;
+  margin: 1% 2%;
+  display: block;
+}
+@media screen and (max-width:700px) {
+  .pcartrows {
+    height: 120px;
+  }
+  .pcarttext, .cartprodname {
+    font-size: 1.5vw;
+  }
+  .q_andr {
+    font-size: 1.2vw;
+  }
 }
 </style>

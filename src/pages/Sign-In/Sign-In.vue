@@ -24,7 +24,7 @@
     <div id="forgot">
       <a
         href="#"
-        style="color:black; text-decoration:none;"
+        style="color:black; text-decoration:none;display:block;"
       > Forgot Password? </a>
     </div>
     {{ error }}
@@ -35,7 +35,7 @@
     </div>
     <div id="Create">
       <router-link to="/register">
-        <a style="color:black; text-decoration:none;">Create an Account</a>
+        <a style="color:black; text-decoration:none; display:block; margin-top: 10%;">Create an Account</a>
       </router-link>
     </div>
   </div>
@@ -88,8 +88,7 @@ export default {
   text-align: center;
   color: #000000;
   border: 2px solid black;
-  margin: 70px 0px 0px 400px;
-  // background-color: rgb(124, 121, 121);
+  margin: 5% auto;
   width: 50%;
   height: 370px;
   border-radius: 2px;
@@ -97,20 +96,14 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .email-sign input[type=text]{
-  width: 400px;
+  width: 60%;
   height: 35px;
-  border-radius: 5px;
-}
-.email-sign input[type=text] :active{
-  width: 400px;
-  height: 35px;
-  border-radius: 5px;
-  border-bottom: 5px solid black;
+  outline: none;
 }
 .pass-sign input[type=password]{
-  width: 400px;
+  width: 60%;
   height: 35px;
-  border-radius: 5px;
+  outline: none;
 }
 #Create {
   margin: 50px 0px 0px 0px
@@ -119,8 +112,8 @@ export default {
   margin: 1px 0px 0px 180px
 }
 button {
-  margin: 30px 0px 0px 0px;
-  width: 150px;
+  margin: 20px auto;
+  width: 25%;
   height: 40px;
   color: white;
   background-color: black;
@@ -130,5 +123,54 @@ h1 {
 }
 #Create a {
   text-decoration: none;
+}
+@media screen and (max-width:700px) {
+#ecom {
+  height: 200px !important;
+  border-bottom-width: 5px;
+}
+#email, #pass {
+  display: block;
+  margin-bottom: -5px;
+  margin-top: 5px;
+}
+#ecom h1 {
+  font-size: 4.5vw;
+}
+#ecom a {
+  font-size: 2.5vw;
+}
+.email-sign {
+  height: 15px;
+}
+.pass-sign {
+  height: 15px;
+}
+#email {
+  margin-top: 1px !important;
+}
+.email-sign input[type=text]{
+  height: 15px;
+}
+.pass-sign input[type=password]{
+  height: 15px;
+}
+button {
+  margin: 0 auto;
+  width: 25%;
+  height: 20px;
+  color: white;
+  font-size: 2vw;
+  background-color: black;
+}
+#but {
+  height: 20%;
+}
+#forgot {
+  font-size: 1.6vw;
+  width: 50%;
+  float: right;
+}
+
 }
 </style>
